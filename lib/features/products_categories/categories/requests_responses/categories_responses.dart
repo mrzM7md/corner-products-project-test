@@ -13,7 +13,6 @@ class CategoriesResponses implements CategoriesRepository {
   Future<CategoriesModel> getAllCategories() {
     return baseCategoriesRequests.getAllCategories().then((response){
       var jsonData = jsonDecode(response.body);
-      print("${jsonData}");
       if(response.statusCode == 200) {
         return CategoriesModel.fromJson(json: {"data":jsonData});
       }
