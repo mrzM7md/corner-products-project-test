@@ -6,38 +6,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_corner_products/core/theme/theme.dart';
 import 'package:test_corner_products/features/products_categories/bussiness/products_categories_cubit.dart';
 import 'package:test_corner_products/features/products_categories/bussiness/products_categories_states.dart';
-import 'package:test_corner_products/features/products_categories/categories/usecases/get_all_categories_use_case.dart';
 import 'package:test_corner_products/features/products_categories/presentation/widgets/categories_listview.dart';
 import 'package:test_corner_products/features/products_categories/presentation/widgets/option_item.dart';
 import 'package:test_corner_products/features/products_categories/presentation/widgets/products_listview.dart';
-import 'package:test_corner_products/features/products_categories/products/usecases/get_all_products_use_case.dart';
 
-import '../../../core/services/services_locator.dart';
-
-class ProductsCategoriesScreen extends StatelessWidget {
+class ProductsCategoriesScreen extends StatefulWidget {
   const ProductsCategoriesScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ProductsCategoriesCubit(
-          getAllCategoriesUseCase: sl<GetAllCategoriesUseCase>(),
-          getAllProductsUseCase: sl<GetAllProductsUseCase>(),
-      ),
-      child: const ProductsCategoriesScreenContent(),
-    );
-  }
+  State<ProductsCategoriesScreen> createState() => _ProductsCategoriesScreenContentState();
 }
 
-
-class ProductsCategoriesScreenContent extends StatefulWidget {
-  const ProductsCategoriesScreenContent({super.key});
-
-  @override
-  State<ProductsCategoriesScreenContent> createState() => _ProductsCategoriesScreenContentState();
-}
-
-class _ProductsCategoriesScreenContentState extends State<ProductsCategoriesScreenContent> {
+class _ProductsCategoriesScreenContentState extends State<ProductsCategoriesScreen> {
   late ProductsCategoriesCubit _controller;
 
   @override

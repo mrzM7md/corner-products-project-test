@@ -1,5 +1,4 @@
-String guestRouter = "guestRouter";
-String cartRouter = "cartRouter";
-String categoriesRouter = "categoriesRouter";
-String askBill = "ask_bill";
-// String guestPage = '/';
+class AppRoutes {
+  static const String mainRouter = "/";
+  static const String detailsRouter = "details";
+}

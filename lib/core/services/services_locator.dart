@@ -20,6 +20,12 @@ class ServicesLocator {
     sl.registerLazySingleton(() => ProductsResponses(baseProductsRequests: sl<ProductsRequests>()), );
     sl.registerLazySingleton(() => GetAllProductsUseCase(productsRepository: sl<ProductsResponses>()), );
 
+
+    sl.registerLazySingleton(() => ProductsCategoriesCubit(
+      getAllCategoriesUseCase: sl<GetAllCategoriesUseCase>(),
+      getAllProductsUseCase: sl<GetAllProductsUseCase>(),
+    ),) ;
+
     sl.registerLazySingleton(() => const CategoriesModel(categories: [],));
   }
 
