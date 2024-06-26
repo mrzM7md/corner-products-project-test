@@ -19,3 +19,11 @@ class GetAllCategoriesState implements ProductsCategoriesState{
 
   const GetAllCategoriesState({required this.categories, required this.isLoaded});
 }
+
+
+class GetAllProductsState implements ProductsCategoriesState{
+  final bool isLoaded;
+  final List products;
+
+  const GetAllProductsState({required this.products, required this.isLoaded});
+}
