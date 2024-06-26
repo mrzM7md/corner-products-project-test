@@ -6,7 +6,7 @@ class CategoriesModel extends Equatable{
   const CategoriesModel({required this.categories});
 
   factory CategoriesModel.fromJson({required Map<String, dynamic> json}) {
-    return CategoriesModel(categories: json['categories'].cast<String>());
+    return CategoriesModel(categories: List.from((json['data'] as List).map((e) => e) ));
   }
 
   @override

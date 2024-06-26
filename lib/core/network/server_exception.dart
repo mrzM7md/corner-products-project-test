@@ -1,3 +1,36 @@
-class ServerException implements Exception{
-  final String message = "server error";
+import 'package:equatable/equatable.dart';
+
+class ServerException implements Exception {
+  final ErrorMessageModel errorMessageModel;
+
+  const ServerException({
+    required this.errorMessageModel,
+  });
+}
+
+class ErrorMessageModel extends Equatable {
+  final int statusCode;
+  final String statusMessage;
+  final bool success;
+
+  const ErrorMessageModel({
+    required this.statusCode,
+    required this.statusMessage,
+    required this.success,
+  });
+
+  factory ErrorMessageModel.fromJson(Map<String, dynamic> json) {
+    return ErrorMessageModel(
+      statusCode: json["status_code"],
+      statusMessage: json["status_message"],
+      success: json["success"],
+    );
+  }
+
+  @override
+  List<Object?> get props => [
+    statusCode,
+    statusMessage,
+    success,
+  ];
 }
