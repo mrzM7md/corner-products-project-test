@@ -9,6 +9,7 @@ import 'package:test_corner_products/features/products_categories/bussiness/prod
 import 'package:test_corner_products/features/products_categories/categories/usecases/get_all_categories_use_case.dart';
 import 'package:test_corner_products/features/products_categories/presentation/widgets/categories_listview.dart';
 import 'package:test_corner_products/features/products_categories/presentation/widgets/option_item.dart';
+import 'package:test_corner_products/features/products_categories/products/usecases/get_all_products_use_case.dart';
 
 import '../../../core/services/services_locator.dart';
 
@@ -19,7 +20,8 @@ class ProductsCategoriesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => ProductsCategoriesCubit(
-          getAllCategoriesUseCase: sl<GetAllCategoriesUseCase>()
+          getAllCategoriesUseCase: sl<GetAllCategoriesUseCase>(),
+          getAllProductsUseCase: sl<GetAllProductsUseCase>(),
       ),
       child: const ProductsCategoriesScreenContent(),
     );
