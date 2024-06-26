@@ -1,8 +1,7 @@
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:test_corner_products/components/theme/theme.dart';
+import 'package:test_corner_products/core/theme/theme.dart';
 
 Widget appButton({
   required backgroundColor,
@@ -17,7 +16,7 @@ Widget appButton({
       (
         padding: const EdgeInsetsDirectional.symmetric(horizontal: 100 , vertical: 17),
         backgroundColor: backgroundColor ,
-        foregroundColor: AppColors().Neutral_0,
+        foregroundColor: ColorsManager().Neutral_0,
         shape: RoundedRectangleBorder
           (
           borderRadius: BorderRadius.circular(19),
@@ -92,9 +91,9 @@ Widget appButtonImage({required onClick, required icon}){
     height: 50,
     width: 50,
     decoration: BoxDecoration(
-        color: AppColors().Neutral_0,
+        color: ColorsManager().Neutral_0,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors().Neutral_150)),
+        border: Border.all(color: ColorsManager().Neutral_150)),
     child: IconButton(
         onPressed: onClick,
         icon:icon

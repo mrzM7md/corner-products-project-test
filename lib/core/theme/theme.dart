@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AppColors {
-
-  static AppColors color = AppColors();
+class ColorsManager {
+  static ColorsManager color = ColorsManager();
 
   //Neutral
   final Color Neutral_900 = Color(0xff32324D);
