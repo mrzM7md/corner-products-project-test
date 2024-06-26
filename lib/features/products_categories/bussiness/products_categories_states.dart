@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:test_corner_products/features/products_categories/categories/models/categories_model.dart';
+import 'package:test_corner_products/features/products_categories/products/models/product_model.dart';
 
 abstract class ProductsCategoriesState {}
 
@@ -23,7 +24,7 @@ class GetAllCategoriesState implements ProductsCategoriesState{
 
 class GetAllProductsState implements ProductsCategoriesState{
   final bool isLoaded;
-  final List products;
+  final List<ProductModel> products;
 
   const GetAllProductsState({required this.products, required this.isLoaded});
 }

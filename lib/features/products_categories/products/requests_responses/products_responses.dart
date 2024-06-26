@@ -12,9 +12,11 @@ class ProductsResponses implements ProductsRepository {
   @override
   Future<ProductsModel> getAllProducts() {
     return baseProductsRequests.getAllFoods().then((response){
+      print("pro response");
       var jsonData = jsonDecode(response.body);
+      print("data: $jsonData}");
       if(response.statusCode == 200) {
-        return ProductsModel.fromJson(json: jsonData);
+        return ProductsModel.fromJson(json: {"products": jsonData});
       }
       throw ServerException(
         errorMessageModel: ErrorMessageModel.fromJson(jsonData),

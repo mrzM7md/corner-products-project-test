@@ -9,6 +9,7 @@ import 'package:test_corner_products/features/products_categories/bussiness/prod
 import 'package:test_corner_products/features/products_categories/categories/usecases/get_all_categories_use_case.dart';
 import 'package:test_corner_products/features/products_categories/presentation/widgets/categories_listview.dart';
 import 'package:test_corner_products/features/products_categories/presentation/widgets/option_item.dart';
+import 'package:test_corner_products/features/products_categories/presentation/widgets/products_listview.dart';
 import 'package:test_corner_products/features/products_categories/products/usecases/get_all_products_use_case.dart';
 
 import '../../../core/services/services_locator.dart';
@@ -45,6 +46,7 @@ class _ProductsCategoriesScreenContentState extends State<ProductsCategoriesScre
     _controller = ProductsCategoriesCubit.get(context);
     _controller.changeOptionSelectedState();
     _controller.getAllCategories();
+    _controller.getAllProducts();
   }
 
   @override
@@ -74,6 +76,7 @@ class _ProductsCategoriesScreenContentState extends State<ProductsCategoriesScre
                               onTap: () {
                                 if(! isClickedOnSameOption(isThisCategoriesOption:false)){
                                   _controller.changeOptionSelectedState();
+                                  _controller.getAllProducts();
                                 }
                               },
                             ),
@@ -106,7 +109,7 @@ class _ProductsCategoriesScreenContentState extends State<ProductsCategoriesScre
                     return ConditionalBuilder(
                         condition: _controller.isCategoriesOptionSelected(),
                         builder: (context) => const CategoriesListview(),
-                        fallback: (context) => Container());
+                        fallback: (context) => const ProductsListview());
                   },
                 )
               ],
