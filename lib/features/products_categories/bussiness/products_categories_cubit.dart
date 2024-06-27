@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_corner_products/features/products_categories/bussiness/products_categories_states.dart';
 import 'package:test_corner_products/features/products_categories/categories/usecases/get_all_categories_use_case.dart';
+import 'package:test_corner_products/features/products_categories/categories/usecases/search_on_categories_use_case.dart';
 import 'package:test_corner_products/features/products_categories/products/models/product_model.dart';
 import 'package:test_corner_products/features/products_categories/products/usecases/get_all_products_use_case.dart';
 import 'package:test_corner_products/features/products_categories/products/usecases/search_on_products_use_case.dart';
@@ -13,8 +14,9 @@ class ProductsCategoriesCubit extends Cubit<ProductsCategoriesState> {
   final GetAllProductsUseCase getAllProductsUseCase;
   final ShowProductDetailsUseCase showProductDetailsUseCase;
   final SearchOnProductsUseCase searchOnProductsUseCase;
+  final SearchOnCategoriesUseCase searchOnCategoriesUseCase;
 
-  ProductsCategoriesCubit({required this.getAllCategoriesUseCase, required this.getAllProductsUseCase, required this.showProductDetailsUseCase, required this.searchOnProductsUseCase})
+  ProductsCategoriesCubit({required this.getAllCategoriesUseCase, required this.getAllProductsUseCase, required this.showProductDetailsUseCase, required this.searchOnProductsUseCase, required this.searchOnCategoriesUseCase})
       : super(InitialProductsCategoriesState());
 
   static ProductsCategoriesCubit get(context) => BlocProvider.of(context);
@@ -42,12 +44,20 @@ class ProductsCategoriesCubit extends Cubit<ProductsCategoriesState> {
     emit(const GetAllCategoriesState(categories: [], isLoaded: false));
     if(_categories.isEmpty){
       var categoriesModel = await getAllCategoriesUseCase(parameters: GetAllCategoriesUseCaseParameters());
-      emit(GetAllCategoriesState(categories: categoriesModel.categories ?? [], isLoaded: true));
       _categories = categoriesModel.categories ?? [];
-    }else{
-      emit(GetAllCategoriesState(categories: _categories, isLoaded: true));
     }
+      emit(GetAllCategoriesState(categories: _categories, isLoaded: true));
   }
+
+  void searchOnCategories({required String keyword}){
+    searchOnProductsUseCase(parameters: (){ // search method
+      var tempCategories = _categories;
+      _categories =_categories.where((c) => c.toUpperCase().contains(keyword.toUpperCase())).toList();
+      emit(GetAllCategoriesState(categories: _categories, isLoaded: true));
+      _categories = tempCategories;
+    });
+  }
+
 
 
   List<ProductModel> _products = [];
@@ -60,7 +70,6 @@ class ProductsCategoriesCubit extends Cubit<ProductsCategoriesState> {
       _products = productsModel.products
           ?? [];
     }
-
       emit(GetAllProductsState(products: _products, isLoaded: true));
   }
 

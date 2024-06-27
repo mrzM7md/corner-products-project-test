@@ -4,6 +4,7 @@ import 'package:test_corner_products/features/products_categories/categories/mod
 import 'package:test_corner_products/features/products_categories/categories/requests_responses/categories_requests.dart';
 import 'package:test_corner_products/features/products_categories/categories/requests_responses/categories_responses.dart';
 import 'package:test_corner_products/features/products_categories/categories/usecases/get_all_categories_use_case.dart';
+import 'package:test_corner_products/features/products_categories/categories/usecases/search_on_categories_use_case.dart';
 import 'package:test_corner_products/features/products_categories/products/requests_responses/products_requests.dart';
 import 'package:test_corner_products/features/products_categories/products/requests_responses/products_responses.dart';
 import 'package:test_corner_products/features/products_categories/products/usecases/get_all_products_use_case.dart';
@@ -23,12 +24,14 @@ class ServicesLocator {
 
     sl.registerLazySingleton(() => ShowProductDetailsUseCase());
     sl.registerLazySingleton(() => SearchOnProductsUseCase());
+    sl.registerLazySingleton(() => SearchOnCategoriesUseCase());
 
     sl.registerLazySingleton(() => ProductsCategoriesCubit(
       getAllCategoriesUseCase: sl<GetAllCategoriesUseCase>(),
       getAllProductsUseCase: sl<GetAllProductsUseCase>(),
       showProductDetailsUseCase: sl<ShowProductDetailsUseCase>(),
       searchOnProductsUseCase: sl<SearchOnProductsUseCase>(),
+      searchOnCategoriesUseCase: sl<SearchOnCategoriesUseCase>(),
     )..changeOptionSelectedState(),) ;
 
     sl.registerLazySingleton(() => const CategoriesModel(categories: [],));
