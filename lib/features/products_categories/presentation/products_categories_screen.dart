@@ -24,9 +24,6 @@ class _ProductsCategoriesScreenContentState extends State<ProductsCategoriesScre
   void initState() {
     super.initState();
     _controller = ProductsCategoriesCubit.get(context);
-    _controller.changeOptionSelectedState();
-    _controller.getAllCategories();
-    _controller.getAllProducts();
   }
 
   @override
@@ -34,6 +31,7 @@ class _ProductsCategoriesScreenContentState extends State<ProductsCategoriesScre
     return SafeArea(
       child: SelectionArea(
         child: Scaffold(
+            key: GlobalKey<ScaffoldState>(),
           body: SingleChildScrollView(
               child: Padding(
                 padding:
@@ -88,7 +86,12 @@ class _ProductsCategoriesScreenContentState extends State<ProductsCategoriesScre
                   builder: (context, state) {
                     return ConditionalBuilder(
                         condition: _controller.isCategoriesOptionSelected(),
-                        builder: (context) => const CategoriesListview(),
+                        builder: (context) => Column(
+                          children: [
+
+                            const CategoriesListview(),
+                          ],
+                        ),
                         fallback: (context) => const ProductsListview());
                   },
                 )

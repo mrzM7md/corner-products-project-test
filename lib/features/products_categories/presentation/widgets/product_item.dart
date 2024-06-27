@@ -44,8 +44,8 @@ class ProductItem extends StatelessWidget {
                       children: [
                         Icon(Icons.star, color: ColorsManager.color.Yellow_1,size: 12.w,),
                         Text("${product.rating == null ? 0.0 : product.rating!.rate}", style: TextStyles.font10Regular(),),
-                        const Spacer(),
-                        Icon(Icons.production_quantity_limits,size: 12.w,),
+                        SizedBox(width: 8.w ,),
+                        Icon(CupertinoIcons.person_3,size: 12.w,),
                         Text("${product.rating == null ? 0.0 : product.rating!.count}", style: TextStyles.font10Regular(),),
                         const Spacer(),
                         Icon(CupertinoIcons.money_dollar_circle_fill, color: ColorsManager.color.Yellow_1,size: 12.w,),

@@ -17,7 +17,7 @@ class ProductsCategoriesCubit extends Cubit<ProductsCategoriesState> {
 
   static ProductsCategoriesCubit get(context) => BlocProvider.of(context);
 
-  bool _isCategoriesOptionSelected = false;
+  bool _isCategoriesOptionSelected = true;
 
   bool isCategoriesOptionSelected() => _isCategoriesOptionSelected;
 

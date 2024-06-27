@@ -16,6 +16,7 @@ class CornerApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       child: BlocProvider(
+        lazy: false,
         create: (context) => sl<ProductsCategoriesCubit>(),
         child: MaterialApp.router(
           routerConfig: RoutesManager.router,

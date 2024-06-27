@@ -1,6 +1,5 @@
 import 'package:get_it/get_it.dart';
 import 'package:test_corner_products/features/products_categories/bussiness/products_categories_cubit.dart';
-import 'package:test_corner_products/features/products_categories/bussiness/products_categories_states.dart';
 import 'package:test_corner_products/features/products_categories/categories/models/categories_model.dart';
 import 'package:test_corner_products/features/products_categories/categories/requests_responses/categories_requests.dart';
 import 'package:test_corner_products/features/products_categories/categories/requests_responses/categories_responses.dart';
@@ -27,7 +26,7 @@ class ServicesLocator {
       getAllCategoriesUseCase: sl<GetAllCategoriesUseCase>(),
       getAllProductsUseCase: sl<GetAllProductsUseCase>(),
       showProductDetailsUseCase: sl<ShowProductDetailsUseCase>(),
-    ),) ;
+    )..changeOptionSelectedState()..getAllCategories()..getAllProducts() ,) ;
 
     sl.registerLazySingleton(() => const CategoriesModel(categories: [],));
   }

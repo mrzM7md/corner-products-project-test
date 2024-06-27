@@ -27,6 +27,7 @@ class RoutesManager {
                   String productId = state.pathParameters['product_id']!;
                   return ProductDetailsScreen(productId: productId);
                 },
+
               ),
             ])
       ]);
