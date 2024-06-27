@@ -4,13 +4,15 @@ import 'package:test_corner_products/features/products_categories/bussiness/prod
 import 'package:test_corner_products/features/products_categories/categories/usecases/get_all_categories_use_case.dart';
 import 'package:test_corner_products/features/products_categories/products/models/product_model.dart';
 import 'package:test_corner_products/features/products_categories/products/usecases/get_all_products_use_case.dart';
+import 'package:test_corner_products/features/products_categories/products/usecases/show_product_details_use_case.dart';
 
 class ProductsCategoriesCubit extends Cubit<ProductsCategoriesState> {
 
   final GetAllCategoriesUseCase getAllCategoriesUseCase;
   final GetAllProductsUseCase getAllProductsUseCase;
+  final ShowProductDetailsUseCase showProductDetailsUseCase;
 
-  ProductsCategoriesCubit({required this.getAllCategoriesUseCase, required this.getAllProductsUseCase})
+  ProductsCategoriesCubit({required this.getAllCategoriesUseCase, required this.getAllProductsUseCase, required this.showProductDetailsUseCase})
       : super(InitialProductsCategoriesState());
 
   static ProductsCategoriesCubit get(context) => BlocProvider.of(context);
@@ -54,6 +56,11 @@ class ProductsCategoriesCubit extends Cubit<ProductsCategoriesState> {
     }
   }
 
+
+  ProductModel showProductDetails({required int productTd}){
+    ProductModel product = _products.where((p) => p.id == productTd).first;
+    return showProductDetailsUseCase(parameters: ShowProductDetailsUseCaseParameters(product: product));
+  }
 
 
 }

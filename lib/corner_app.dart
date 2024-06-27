@@ -19,7 +19,7 @@ class CornerApp extends StatelessWidget {
         create: (context) => sl<ProductsCategoriesCubit>(),
         child: MaterialApp.router(
           routerConfig: RoutesManager.router,
-          title: 'Corner Test',
+          title: 'Corner App',
           theme: ThemeData(
             primaryColor: ColorsManager.color.Success_200,
             scaffoldBackgroundColor: Colors.white,
