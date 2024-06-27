@@ -26,7 +26,7 @@ class ServicesLocator {
       getAllCategoriesUseCase: sl<GetAllCategoriesUseCase>(),
       getAllProductsUseCase: sl<GetAllProductsUseCase>(),
       showProductDetailsUseCase: sl<ShowProductDetailsUseCase>(),
-    )..changeOptionSelectedState()..getAllCategories()..getAllProducts() ,) ;
+    )..changeOptionSelectedState(),) ;
 
     sl.registerLazySingleton(() => const CategoriesModel(categories: [],));
   }

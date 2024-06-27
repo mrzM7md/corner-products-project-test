@@ -25,6 +25,12 @@ class ProductsCategoriesCubit extends Cubit<ProductsCategoriesState> {
     _isCategoriesOptionSelected = !isCategoriesOptionSelected();
     emit(ChangeOptionSelectedState(
         isCategoriesOptionSelected: _isCategoriesOptionSelected));
+    if(isCategoriesOptionSelected()){
+      getAllCategories();
+    }
+    else{
+      getAllProducts();
+    }
   }
 
   List<String> _categories = [];
