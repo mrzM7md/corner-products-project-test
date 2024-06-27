@@ -7,8 +7,10 @@ import 'package:test_corner_products/core/theme/theme.dart';
 import 'package:test_corner_products/features/products_categories/bussiness/products_categories_cubit.dart';
 import 'package:test_corner_products/features/products_categories/bussiness/products_categories_states.dart';
 import 'package:test_corner_products/features/products_categories/presentation/widgets/categories_listview.dart';
+import 'package:test_corner_products/features/products_categories/presentation/widgets/categories_search.dart';
 import 'package:test_corner_products/features/products_categories/presentation/widgets/option_item.dart';
 import 'package:test_corner_products/features/products_categories/presentation/widgets/products_listview.dart';
+import 'package:test_corner_products/features/products_categories/presentation/widgets/products_search.dart';
 
 class ProductsCategoriesScreen extends StatefulWidget {
   const ProductsCategoriesScreen({super.key});
@@ -86,13 +88,18 @@ class _ProductsCategoriesScreenContentState extends State<ProductsCategoriesScre
                   builder: (context, state) {
                     return ConditionalBuilder(
                         condition: _controller.isCategoriesOptionSelected(),
-                        builder: (context) => Column(
+                        builder: (context) => const Column(
                           children: [
-
-                            const CategoriesListview(),
+                            CategoriesSearch(),
+                            CategoriesListview(),
                           ],
                         ),
-                        fallback: (context) => const ProductsListview());
+                        fallback: (context) => const Column(
+                          children: [
+                            ProductsSearch(),
+                            ProductsListview(),
+                          ],
+                        ));
                   },
                 )
               ],
