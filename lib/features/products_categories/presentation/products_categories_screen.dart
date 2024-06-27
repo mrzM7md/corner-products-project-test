@@ -36,8 +36,7 @@ class _ProductsCategoriesScreenContentState extends State<ProductsCategoriesScre
             key: GlobalKey<ScaffoldState>(),
           body: SingleChildScrollView(
               child: Padding(
-                padding:
-                EdgeInsetsDirectional.only(top: 20.h, start: 15.w, end: 15.w),
+                padding: EdgeInsetsDirectional.only(top: 20.h, start: 15.w, end: 15.w),
                 child: Column(
                   children: [
                     BlocBuilder<ProductsCategoriesCubit, ProductsCategoriesState>(

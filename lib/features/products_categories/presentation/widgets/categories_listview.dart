@@ -22,7 +22,7 @@ class CategoriesListview extends StatelessWidget {
           }
           List data = state.categories;
           if(data.isEmpty){
-            return buildNoData(image: Images.noDataImage, text: "No Categories Added Yet");
+            return buildNoData(image: Images.noDataImage, text: "Empty");
           }
           return
             ListView.separated(

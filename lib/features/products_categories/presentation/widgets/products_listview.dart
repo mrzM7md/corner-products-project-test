@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_corner_products/core/constants/widgets_components.dart';
 import 'package:test_corner_products/core/network/server_exception.dart';
-import 'package:test_corner_products/core/theme/styles.dart';
 import 'package:test_corner_products/core/utilities/images.dart';
 import 'package:test_corner_products/features/products_categories/bussiness/products_categories_cubit.dart';
 import 'package:test_corner_products/features/products_categories/bussiness/products_categories_states.dart';
@@ -40,7 +39,7 @@ class ProductsListview extends StatelessWidget {
           if(ex is ServerException){
             return Center(child: Text(ex.errorMessageModel.statusMessage),);
           }
-          return const Center(child: Text("Check Your Connection"),);
+          return const Center(child: Text("Empty"),);
         }
       },
     );
