@@ -5,7 +5,8 @@ import 'package:test_corner_products/core/theme/theme.dart';
 class SearchTextInput extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
-  const SearchTextInput({super.key, required this.hintText, required this.controller});
+  final ValueChanged<String>? onChange;
+  const SearchTextInput({super.key, required this.hintText, required this.controller, required this.onChange});
 
 
   @override
@@ -13,6 +14,7 @@ class SearchTextInput extends StatelessWidget {
     return Column(
       children: [
         TextField(
+          onChanged: onChange,
           decoration: InputDecoration(
             hintMaxLines: 1,
             hintText: hintText,

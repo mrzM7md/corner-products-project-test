@@ -7,6 +7,8 @@ class CategoriesSearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = TextEditingController();
-    return SearchTextInput(hintText: "search on categories", controller: controller);
+    return SearchTextInput(hintText: "search on categories", controller: controller,
+      onChange: null,
+    );
   }
 }
